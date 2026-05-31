@@ -13,7 +13,7 @@ void swap(int* a, int* b)
 
 char* return_heap_type(int heapType)
 {
-    return heapType == 0 ? 'Min' : 'Max';
+    return heapType == 0 ? "Min" : "Max";
 }
 
 priority_queue* pq_init(HeapType heapType)
@@ -105,7 +105,7 @@ bool extractTop(priority_queue* pq, int* result)
     return true;
 }
 
-bool peek(priority_queue* pq, int* result)
+bool peek_pq(priority_queue* pq, int* result)
 {
     if (pq == NULL || result == NULL || pq->size == 0) return false;
     *result = pq->heap[0];
@@ -204,7 +204,7 @@ void priority_queue_demo(void)
             else
             {
                 int peek_element;
-                bool peek_element_status = peek(pq,&peek_element);
+                bool peek_element_status = peek_pq(pq,&peek_element);
 
                 if(!peek_element_status)
                 {

@@ -94,8 +94,6 @@ int insert_node_tbt(TBTnode** root_ref, int key);
 void destroy_tbt(TBTnode* node);
 void TBT_demo(void);
 
-#endif
-
 // For Priority Queue
 typedef enum
 {
@@ -113,7 +111,9 @@ typedef struct priority_queue
 priority_queue* pq_init(HeapType heapType);
 int insert(priority_queue* pq , int val);
 bool extractTop(priority_queue* pq, int* result);
-bool peek(priority_queue* pq, int* result);
+bool peek_pq(priority_queue* pq, int* result);
 void destroy_pq(priority_queue* pq);
 void display_heap(priority_queue *pq);
 void priority_queue_demo(void);
+
+#endif
