@@ -1,5 +1,6 @@
 #include "data_structures.h"
 #include "safe_input.h"
+#include "history_logger.h"
 #include <stdio.h>
 #include <time.h>
 
@@ -90,4 +91,5 @@ void bubble_sort_optimized(int arr[], int length_of_array)
     printf("\nfinal array sorted by bubble sort is - ");
     print_array(arr, length_of_array);
     printf("\nTotal CPU time taken:- %f seconds", total_t);
+    add_to_history("Bubble Sort", length_of_array, total_t);
 }

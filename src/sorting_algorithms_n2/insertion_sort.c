@@ -1,5 +1,6 @@
 #include "data_structures.h"
 #include "safe_input.h"
+#include "history_logger.h"
 #include <stdio.h>
 #include <time.h>
 
@@ -84,4 +85,5 @@ void insertion_sort(int arr[], int length_of_array)
     printf("\nfinal array sorted by insertion sort - ");
     print_array(arr, length_of_array);
     printf("\nTotal CPU time taken:- %f seconds", total_t);
+    add_to_history("Insertion Sort", length_of_array, total_t);
 }
