@@ -62,10 +62,6 @@ int astar_solve(weightedGraph* graph, int start, int dest, int h[], int parent[]
 void astar(weightedGraph* graph, int start, int dest, int h[]);
 void astar_demo(void);
 
-// Floyd-Warshall algorithm prototypes
-void floyd_warshall(int** graph, int V, int** dist, int** next);
-void print_floyd_warshall_solution(int** dist, int** next, int V);
-void floyd_warshall_demo(void);
 
 // ------------------For Greedy Best-First Search-----------------------
 
@@ -77,18 +73,5 @@ int greedy_best_first_search_solve(weightedGraph* graph, int start, int dest,
 void greedy_best_first_search(weightedGraph* graph, int start, int dest, int h[]);
 void greedy_best_first_search_demo(void);
 
-// ------------------For Kruskal's MST Algorithm------------------------
-
-typedef struct KruskalEdge
-{
-    int src;
-    int dest;
-    int weight;
-} KruskalEdge;
-
-void kruskal_mst(KruskalEdge* edges, int V, int E,
-                 KruskalEdge* mst_edges, int* mst_edge_count);
-
-void kruskal_demo(void);
 
 #endif
