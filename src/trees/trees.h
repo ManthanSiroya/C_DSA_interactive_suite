@@ -91,15 +91,34 @@ void      trie_delete(TrieNode *root, const char *word);
 void      trie_free(TrieNode *node);
 void      trie_demo(void);
 
+// For B-Tree
+#define BTREE_MAX_DEGREE 10
+
+typedef struct btreeNode
+{
+    int keys[2 * BTREE_MAX_DEGREE - 1];
+    struct btreeNode* children[2 * BTREE_MAX_DEGREE];
+    int num_keys;
+    int is_leaf;
+} btreeNode;
+
+btreeNode* btree_create_node(int is_leaf);
+int        btree_insert(btreeNode** root_ref, int key, int t);
+int        btree_search(btreeNode* root, int key);
+void       btree_traverse(const btreeNode* root);
+btreeNode* btree_delete(btreeNode* root, int key, int t);
+void       btree_destroy(btreeNode* root);
+void       btree_demo(void);
+
 // For B+ Tree
 typedef struct BPlusNode {
     bool is_leaf;
     int num_keys;
-    int *keys;                   // size: order
-    struct BPlusNode **children; // size: order + 1 (for internal nodes)
-    int *values;                 // size: order (for leaf nodes)
-    struct BPlusNode *next;      // for leaf nodes: pointer to next sibling leaf
-    struct BPlusNode *prev;      // for leaf nodes: pointer to previous sibling leaf
+    int *keys;
+    struct BPlusNode **children;
+    int *values;
+    struct BPlusNode *next;
+    struct BPlusNode *prev;
 } BPlusNode;
 
 typedef struct BPlusTree {
