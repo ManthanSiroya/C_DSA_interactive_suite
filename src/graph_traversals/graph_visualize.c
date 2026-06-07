@@ -76,8 +76,8 @@ void visualize_graph_demo(void)
 
             break;
         }
-    }
-    else
+    }  
+    else if(input_method==1)
     {
         while (1)
         {
