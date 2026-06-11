@@ -292,8 +292,22 @@ void print_graph(const Graph* graph)
 
     for (int i = 0; i < graph->V; i++)
     {
-        printf("vertex %d: ", i);
-        sll_printlist(graph->array[i]);
+        printf("Vertex %d -> ", i);
+
+        Node* head = graph->array[i];
+        if(head == NULL)
+        {
+            printf("\n");
+            continue;
+        }
+        while (head->next != NULL)
+        {
+            printf("%d, ", head->data);
+            head = head->next;
+        }
+
+        printf("%d", head->data);
+
         printf("\n");
     }
 }
