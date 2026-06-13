@@ -4,21 +4,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#ifdef _WIN32
-#include <windows.h>
-#define SLEEP_MS(ms) Sleep(ms)
-#define CLEAR_SCREEN() system("cls")
-#else
-#include <unistd.h>
-#define SLEEP_MS(ms) usleep((ms) * 1000)
-#define CLEAR_SCREEN() system("clear")
-#endif
+#include "cross_platform.h"
 
 #define MAX_N 8
 
 static void print_board(int N, char board[MAX_N][MAX_N])
 {
-    CLEAR_SCREEN();
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
     printf("\n--- N-Queens Visualization ---\n\n");
     for (int i = 0; i < N; i++)
     {
@@ -29,7 +25,7 @@ static void print_board(int N, char board[MAX_N][MAX_N])
         printf("\n");
     }
     printf("\n");
-    SLEEP_MS(200);
+    sleep_seconds(1);
 }
 
 static bool is_safe(int N, char board[MAX_N][MAX_N], int row, int col)
@@ -98,7 +94,7 @@ void n_queens_demo(void)
             board[i][j] = '.';
 
     printf("\nStarting N-Queens Solver...\n");
-    SLEEP_MS(1000);
+    sleep_seconds(1);
 
     if (solve_n_queens_util(N, board, 0) == false)
     {
