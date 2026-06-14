@@ -6,11 +6,11 @@
 #include <unistd.h>
 #endif
 
-void sleep_seconds(unsigned int seconds)
+void sleep_seconds(float seconds)
 {
 #ifdef _WIN32
     Sleep(seconds * 1000);
 #else
-    sleep(seconds);
+    usleep(seconds * 1000000);
 #endif
 }
