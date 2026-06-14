@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "clear_screen.h"
+
 #define N 6
 
 // 1 represents an open path, 0 represents a wall
@@ -13,11 +15,7 @@ static int initial_maze[N][N] = {{1, 1, 1, 1, 0, 1}, {1, 0, 0, 1, 0, 1}, {1, 1, 
 
 static void print_maze_state(int maze[N][N], int solution[N][N])
 {
-#ifdef _WIN32
-    system("cls");
-#else
-    system("clear");
-#endif
+    clear_screen();
     printf("\n--- Rat in a Maze Visualization (6x6) ---\n\n");
     for (int i = 0; i < N; i++)
     {

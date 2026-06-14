@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "clear_screen.h"
+
 #define N 6
 
 // A 6x6 Sudoku puzzle with some missing numbers to demonstrate backtracking.
@@ -14,11 +16,7 @@ static int initial_grid[N][N] = {{1, 5, 3, 4, 6, 0}, {4, 6, 2, 0, 1, 3}, {2, 4, 
 
 static void print_sudoku_board(int grid[N][N])
 {
-#ifdef _WIN32
-    system("cls");
-#else
-    system("clear");
-#endif
+    clear_screen();
     printf("\n--- Sudoku Solver Visualization (6x6) ---\n\n");
     for (int row = 0; row < N; row++)
     {

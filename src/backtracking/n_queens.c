@@ -6,15 +6,13 @@
 
 #include "cross_platform.h"
 
+#include "clear_screen.h"
+
 #define MAX_N 8
 
 static void print_board(int N, char board[MAX_N][MAX_N])
 {
-#ifdef _WIN32
-    system("cls");
-#else
-    system("clear");
-#endif
+    clear_screen();
     printf("\n--- N-Queens Visualization ---\n\n");
     for (int i = 0; i < N; i++)
     {

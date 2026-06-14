@@ -6,12 +6,9 @@
 #include <time.h>
 #include "cross_platform.h"
 
+#include "clear_screen.h"
 #ifdef _WIN32
 #include <windows.h>
-#define clear_screen() system("cls")
-#else
-#include <unistd.h>
-#define clear_screen() printf("\033[H\033[J")
 #endif
 
 // ANSI styles
