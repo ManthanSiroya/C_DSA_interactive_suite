@@ -160,4 +160,37 @@ bool deque_is_full(const Queue* dq);
 void display_deque(const Queue* dq);
 void deque_demo(void);
 
+
+// For Doubly cirular linked list 
+
+typedef struct dcll_Node
+{
+    int data;
+    struct dcll_Node * next;
+    struct dcll_Node * prev;
+}dcll_Node;
+
+typedef struct dcll
+{
+    dcll_Node* head;
+    dcll_Node* tail;
+    int length;
+} dcll;
+
+void dcll_init(dcll* list);
+int dcll_insertAtBeginning(dcll* list, int value);
+int dcll_insertAtEnd(dcll* list, int value);
+int dcll_insertAtPosition(dcll* list, int value, int position);
+int dcll_deleteAtBeginning(dcll* list);
+int dcll_deleteAtEnd(dcll* list);
+int dcll_deleteByValue(dcll* list, int value);
+int dcll_deleteAtPosition(dcll* list, int position);
+int dcll_search(const dcll* list, int key);
+int dcll_getLength(const dcll* list);
+void dcll_printlist(const dcll* list);
+void dcll_destroy(dcll* list);
+void dcll_Demo(void);
+
+
+
 #endif

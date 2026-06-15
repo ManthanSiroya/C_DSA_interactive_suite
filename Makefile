@@ -106,7 +106,7 @@ valgrind:
 
 TEST_BINS = test_circ_queue test_bst test_search test_hash_func \
             test_sll test_dll test_array test_stack test_tbt \
-            test_priority_queue test_scll test_simple_queue \
+            test_priority_queue test_scll test_dcll test_simple_queue \
             test_deque test_astar test_avl \
             test_greedy_bfs test_sorting_n2 test_advanced_sorting \
             test_history_logger test_shell_sort test_trie test_btree test_bplus_tree test_parity_bit \
@@ -217,6 +217,13 @@ test_scll: $(TEST_DIR)/test_scll$(EXE)
 	$(TEST_DIR)/test_scll$(EXE)
 
 $(TEST_DIR)/test_scll$(EXE): $(OBJ_DIR)/src/data_structures/scll.o $(OBJ_DIR)/src/utils/safe_input_int.o tests/test_scll.c
+	@$(call MKDIR_P,$(TEST_DIR))
+	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
+
+test_dcll: $(TEST_DIR)/test_dcll$(EXE)
+	$(TEST_DIR)/test_dcll$(EXE)
+
+$(TEST_DIR)/test_dcll$(EXE): $(OBJ_DIR)/src/data_structures/dcll.o $(OBJ_DIR)/src/utils/safe_input_int.o tests/test_dcll.c
 	@$(call MKDIR_P,$(TEST_DIR))
 	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 

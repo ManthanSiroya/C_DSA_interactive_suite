@@ -53,7 +53,8 @@ static Entry ENTRIES[] = {
     {"Linear Queue", simple_queue_Demo, 0, 0, 1},
     {"Circular Data Structures", NULL, 1, 0, 0},
     {"Circular Queue", circular_queue_Demo, 0, 0, 1},
-    {"Singly Circular Queue", scll_Demo, 0, 0, 1},
+    {"Singly Circular Linked List", scll_Demo, 0, 0, 1},
+    {"Doubly Circular Linked List", dcll_Demo, 0, 0, 1},
     {"Double-ended Queue", deque_demo, 0, 0, 1},
 
     
