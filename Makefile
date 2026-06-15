@@ -119,14 +119,14 @@ test_mcm: $(TEST_DIR)/test_mcm$(EXE)
 
 $(TEST_DIR)/test_mcm$(EXE): $(OBJ_DIR)/src/dynamic_programming/mcm.o $(OBJ_DIR)/src/utils/safe_input_int.o $(OBJ_DIR)/src/utils/history_logger.o tests/test_mcm.c
 	@$(call MKDIR_P,$(TEST_DIR))
-$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
+	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
 test_kruskal: $(TEST_DIR)/test_kruskal$(EXE)
 	$(TEST_DIR)/test_kruskal$(EXE)
 
 $(TEST_DIR)/test_kruskal$(EXE): $(filter-out $(OBJ_DIR)/src/data_structures/main.o, $(OBJS)) tests/test_kruskal.c
 	@$(call MKDIR_P,$(TEST_DIR))
-$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
+	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
 test_floyd_warshall: $(TEST_DIR)/test_floyd_warshall$(EXE)
 	$(TEST_DIR)/test_floyd_warshall$(EXE)
