@@ -18,6 +18,7 @@
 #include "trees.h"
 #include "advanced_sorting.h"
 #include "expression.h"
+#include "string_algorithms.h"
 #include "safe_input.h"
 
 /* ── types ──────────────────────────────────────────────────────────────────── */
@@ -57,55 +58,96 @@ static Entry ENTRIES[] = {
     {"Doubly Circular Linked List", dcll_Demo, 0, 0, 1},
     {"Double-ended Queue", deque_demo, 0, 0, 1},
 
-    
     {"Backtracking", NULL, 1, 1, 0},
     {"N queens", n_queens_demo, 0, 0, 1},
     {"Sudoku", sudoku_demo, 0, 0, 1},
     {"Rat in a Maze", rat_in_maze_demo, 0, 0, 1},
     {"Graph Coloring", graph_coloring_demo, 0, 0, 1},
     {"Knights Tour", knights_tour_demo, 0, 0, 1},
-    
-    
-    
+
     {"Dynamic Programming", NULL, 1, 1, 0},
     {"Knapsack", knapsack_demo, 0, 0, 1},
     {"lcs", lcs_demo, 0, 0, 1},
     {"fibonacci", fibonacci_demo, 0, 0, 1},
     {"matrix Chain", mcm_demo, 0, 0, 1},
 
-
     {"trees", NULL, 1, 1, 0},
     {"Binary Search Tree", binary_search_tree_Demo, 0, 0, 1},
     {"AVL Tree", avl_demo, 0, 0, 1},
+    {"Threaded Binary Tree", TBT_demo, 0, 0, 1},
+    {"Trie", trie_demo, 0, 0, 1},
+    {"B-Tree", btree_demo, 0, 0, 1},
+    {"B+ Tree", bplus_tree_demo, 0, 0, 1},
 
     {"sorting_algorithms_n2", NULL, 1, 1, 0},
     {"Bubble Sort", bubble_sort_optimized_demo, 0, 0, 1}, /* add fn when known */
     {"Selection Sort", selection_sort_demo, 0, 0, 1},
     {"Insertion Sort", insertion_sort_demo, 0, 0, 1},
+    {"Shell Sort", shell_sort_demo, 0, 0, 1},
 
     {"advanced_sorting", NULL, 1, 1, 0},
     {"Quick Sort", quicksort_demo, 0, 0, 1},
     {"Merge Sort", merge_sort_demo, 0, 0, 1},
     {"Heap Sort", heap_sort_demo, 0, 0, 1},
     {"Radix Sort", radix_sort_demo, 0, 0, 1},
+    {"Bucket Sort", bucket_sort_demo, 0, 0, 1},
 
     {"searching_algorithms", NULL, 1, 1, 0},
     {"Linear Search", linear_search_demo_wrapper, 0, 0, 1},
     {"Binary Search", binary_search_demo_wrapper, 0, 0, 1},
+    {"Binary Search (Recursive)", binary_search_recursive_demo, 0, 0, 1},
+    {"Interpolation Search", interpolation_search_demo, 0, 0, 1},
+    {"Jump Search", jump_search_demo, 0, 0, 1},
 
     {"graph_traversals", NULL, 1, 1, 0},
     {"BFS", bfs_demo, 0, 0, 1},
     {"DFS", dfs_demo, 0, 0, 1},
     {"Dijkstra", dijkstra_demo, 0, 0, 1},
+    {"A*", astar_demo, 0, 0, 1},
+    {"Greedy BFS", greedy_best_first_search_demo, 0, 0, 1},
+    {"Bellman-Ford", bellman_ford_demo, 0, 0, 1},
+    {"Topological Sort", topological_sort_demo, 0, 0, 1},
+    {"Visualize Graph", visualize_graph_demo, 0, 0, 1},
+    {"Kruskal MST", kruskal_demo, 0, 0, 1},
+    {"Prim MST", prim_demo, 0, 0, 1},
+    {"Floyd-Warshall", floyd_warshall_demo, 0, 0, 1},
 
     {"hashing", NULL, 1, 1, 0},
     {"Linear Probing", linear_probing_demo, 0, 0, 1},
     {"Separate Chaining", separate_chaining_demo, 0, 0, 1},
     {"Double Hashing", double_hashing_demo, 0, 0, 1},
+    {"Quadratic Probing", quadratic_probing_demo, 0, 0, 1},
 
     {"expression_evaluation", NULL, 1, 1, 0},
     {"Infix to Postfix", infix_to_postfix_Demo, 0, 0, 1},
-    {"Postfix Evaluation", parantheses_checker_demo, 0, 0, 1},
+    {"Postfix Evaluation", postfix_evaluation_Demo, 0, 0, 1},
+    {"Parentheses Checker", parantheses_checker_demo, 0, 0, 1},
+
+    {"error_correction_algorithms", NULL, 1, 1, 0},
+    {"Checksum (Sender)", checksum_demo, 0, 0, 1},
+    {"Checksum (Receiver)", checksum_receiver_demo, 0, 0, 1},
+    {"CRC (Sender)", crc_demo, 0, 0, 1},
+    {"CRC (Receiver)", crc_receiver_demo, 0, 0, 1},
+    {"LRC (Sender)", lrc_demo, 0, 0, 1},
+    {"LRC (Receiver)", lrc_receiver_demo, 0, 0, 1},
+    {"VRC (Sender)", vrc_demo, 0, 0, 1},
+    {"VRC (Receiver)", vrc_receiver_demo, 0, 0, 1},
+    {"Parity Bit", parity_bit_demo, 0, 0, 1},
+    {"Hamming Code (Sender)", hamming_demo, 0, 0, 1},
+    {"Hamming Code (Receiver)", hamming_receiver_demo, 0, 0, 1},
+
+    {"job_scheduling", NULL, 1, 1, 0},
+    {"FCFS", fcfs_demo, 0, 0, 1},
+    {"SJF", sjf_demo, 0, 0, 1},
+    {"SRTF", srtf_demo, 0, 0, 1},
+    {"Priority (Non-Preemptive)", priority_scheduling_demo, 0, 0, 1},
+    {"Preemptive Priority", preemptive_priority_demo, 0, 0, 1},
+    {"Round Robin", round_robin_demo, 0, 0, 1},
+
+    {"string_algorithms", NULL, 1, 1, 0},
+    {"Naive String Matching", naive_string_matching_demo, 0, 0, 1},
+    {"KMP Search", kmp_demo, 0, 0, 1},
+    {"Rabin-Karp Search", rabin_karp_demo, 0, 0, 1},
 };
 
 static const int ENTRY_COUNT = sizeof(ENTRIES) / sizeof(ENTRIES[0]);
@@ -388,7 +430,7 @@ void tui_run(void)
     curs_set(0);
     init_colors();
 
-    int visible[128];
+    int visible[256];
     int vis_count;
 
     State s = {.nav_cursor = 0, .active = PANE_NAV, .last_ran = {0}, .demo_ran = 0};
@@ -413,7 +455,7 @@ void tui_run(void)
         keypad(viz_win, TRUE);
 
         /* build visible list */
-        vis_count = build_visible(visible, 128);
+        vis_count = build_visible(visible, 256);
 
         /* clamp cursor */
         if (s.nav_cursor >= vis_count)
@@ -473,7 +515,7 @@ void tui_run(void)
                     if (parent >= 0)
                     {
                         /* find parent in visible list */
-                        vis_count = build_visible(visible, 128);
+                        vis_count = build_visible(visible, 256);
                         for (int i = 0; i < vis_count; i++)
                         {
                             if (visible[i] == parent)
