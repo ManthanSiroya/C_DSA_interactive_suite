@@ -19,7 +19,7 @@ int precedence(char ch)
         return -1;
 }
 
-static int isOperator(char ch)
+int isOperator(char ch)
 {
     if (ch == '+' || ch == '-' || ch == '*' || ch == '/')
         return 1;
