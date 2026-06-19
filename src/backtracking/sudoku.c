@@ -127,12 +127,12 @@ static bool solve_sudoku_util(int grid[N][N], int row, int col)
             {
                 return true;
             }
-        }
 
-        // Backtrack: assumption was wrong
-        grid[row][col] = 0;
-        backtracks++;
-        print_sudoku_board(grid, original_grid);
+            // Backtrack: this placement led to a dead end, undo it.
+            grid[row][col] = 0;
+            backtracks++;
+            print_sudoku_board(grid, original_grid);
+        }
     }
     return false;
 }
