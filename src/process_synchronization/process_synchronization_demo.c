@@ -7,7 +7,7 @@ void process_synchronization_demo(void)
 {
     while (1)
     {
-        clear_screen();
+        if (!is_instant()) { clear_screen(); }
         int choice;
         int status = safe_input_int(&choice,
                                     "\n\n--- Process Synchronization Demos ---\n"

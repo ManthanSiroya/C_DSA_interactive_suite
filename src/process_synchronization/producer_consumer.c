@@ -63,7 +63,7 @@ void producer_consumer_demo(void)
 
     while (1)
     {
-        clear_screen();
+        if (!is_instant()) { clear_screen(); }
         printf("\n\033[1;36m=== PRODUCER-CONSUMER PROBLEM SIMULATOR ===\033[0m\n");
         printf("This demo visualizes the behavior of Producer and Consumer processes\n");
         printf("synchronizing over a bounded circular buffer using Semaphores.\n");
@@ -189,7 +189,7 @@ void producer_consumer_demo(void)
 
             for (int s = 0; s < steps; s++)
             {
-                clear_screen();
+                if (!is_instant()) { clear_screen(); }
                 printf("\n\033[1;36m=== Auto-Simulation (Step %d of %d) ===\033[0m\n", s + 1,
                        steps);
                 display_buffer_state(buffer, in, out, mutex, empty, full, prod_blocked,
