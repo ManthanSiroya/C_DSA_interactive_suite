@@ -63,13 +63,27 @@ sudo pacman -S ncurses
 ```
 > **Note:** The TUI is supported on Unix/Linux systems. On Windows, the project automatically falls back to the legacy CLI interface.
 
-### Build
+### Build (Makefile)
 ```bash
 make
 ```
 This generates a single executable:
 * `dsa` (Linux / macOS)
 * `dsa.exe` (Windows)
+
+### Build (CMake)
+Alternatively, you can compile the application and tests using CMake:
+```bash
+mkdir build && cd build
+cmake ..
+make
+```
+
+To execute all unit tests using CTest:
+```bash
+ctest --output-on-failure
+```
+
 
 
 ```bash

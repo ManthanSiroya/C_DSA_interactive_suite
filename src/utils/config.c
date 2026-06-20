@@ -41,6 +41,10 @@ void print_current_speed(void)
 
 void dynamic_sleep(void)
 {
+    if (!is_terminal_interactive())
+    {
+        return;
+    }
     if (current_delay_seconds > 0)
     {
         sleep_seconds(current_delay_seconds);
@@ -75,5 +79,9 @@ void settings_menu_demo(void)
 
 int is_instant(void)
 {
+    if (!is_terminal_interactive())
+    {
+        return 1;
+    }
     return (current_delay_seconds == 0) ? 1 : 0;
 }
