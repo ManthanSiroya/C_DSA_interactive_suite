@@ -65,9 +65,40 @@ enable_testing()
 
 # Build all tests
 file(GLOB TEST_FILES "tests/test_*.c")
+set(TEST_TARGETS "")
 foreach(TEST_FILE ${TEST_FILES})
     get_filename_component(TEST_NAME ${TEST_FILE} NAME_WE)
     add_executable(${TEST_NAME} ${TEST_FILE})
     target_link_libraries(${TEST_NAME} dsa_lib ${EXTRA_LIBS})
     add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME})
+    list(APPEND TEST_TARGETS ${TEST_NAME})
 endforeach()
+
+# Custom target to run the main application
+add_custom_target(run
+    COMMAND $<TARGET_FILE:dsa>
+    DEPENDS dsa
+    COMMENT "Running dsa..."
+)
+
+# Custom target to format source code using clang-format
+add_custom_target(fmt
+    COMMAND find . -name "*.c" -not -path "*/build/*" -not -path "*/object_files/*" -not -path "*/test_binaries/*" -o -name "*.h" -not -path "*/build/*" -not -path "*/object_files/*" -not -path "*/test_binaries/*" | xargs clang-format -i
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    COMMENT "Formatting source files..."
+)
+
+# Custom target to run valgrind memory checks on all tests
+set(VALGRIND_COMMANDS "")
+foreach(TEST_TARGET ${TEST_TARGETS})
+    list(APPEND VALGRIND_COMMANDS
+        COMMAND echo "Running valgrind on ${TEST_TARGET}..."
+        COMMAND valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --error-exitcode=1 $<TARGET_FILE:${TEST_TARGET}>
+    )
+endforeach()
+
+add_custom_target(valgrind
+    ${VALGRIND_COMMANDS}
+    COMMENT "Running Valgrind memory checks on all tests..."
+)
+
